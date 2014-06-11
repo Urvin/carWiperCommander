@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="com.htsoft.debug.ui.htcLaunch">
+<booleanAttribute key="com.htsoft.debug.autoConfig" value="true"/>
+<stringAttribute key="com.htsoft.debug.currTarget" value="12F683"/>
+<booleanAttribute key="com.htsoft.debug.option.stopAtMain" value="false"/>
+<booleanAttribute key="com.htsoft.debug.option.stopAtStartup" value="false"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.htsoft.picc.debugger.simulator"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="run"/>
+<booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="false"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN_SYMBOL" value="main"/>
+<booleanAttribute key="org.eclipse.cdt.launch.ENABLE_REGISTER_BOOKKEEPING" value="false"/>
+<booleanAttribute key="org.eclipse.cdt.launch.ENABLE_VARIABLE_BOOKKEEPING" value="false"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Release/carWiper.hex"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="carWiper"/>
+<booleanAttribute key="org.eclipse.cdt.launch.use_terminal" value="true"/>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="false"/>
+<stringAttribute key="org.eclipse.debug.core.source_locator_id" value="org.eclipse.cdt.debug.ui.DefaultSourceLocator"/>
+</launchConfiguration>
