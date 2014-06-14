@@ -11,12 +11,14 @@ Functionality scenario:
 
 
 ##Component list
+* [L78L05ABUTR voltage regulator](http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00000446.pdf);
 * [pic12F683 MCU](http://ww1.microchip.com/downloads/en/devicedoc/41211d_.pdf);
 * [IRLML2402 MOSFET](http://www.irf.com/product-info/datasheets/data/irlml2402.pdf);
 * [IRFR6402 MOSFET](http://www.irf.com/product-info/datasheets/data/irlml6402.pdf);
 * 1 x 0805 100kOhms resistors;
 * 1 x 0805 10kOhms resistors;
 * 1 x 0805 100Ohms resistor;
+* 1 x 0805 4.7mF capacitor;
 * Can be supplied with a 4x2.54connector.
 
 ##Directory tree
