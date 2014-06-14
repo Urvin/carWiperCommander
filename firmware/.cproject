@@ -3,8 +3,8 @@
 
 <cproject>
 <storageModule moduleId="org.eclipse.cdt.core.settings">
-<cconfiguration id="com.htsoft.picc.pro.config.release.hex_1.0.2.98381662">
-<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.htsoft.picc.pro.config.release.hex_1.0.2.98381662" moduleId="org.eclipse.cdt.core.settings" name="Release">
+<cconfiguration id="com.htsoft.picc.std.config.release.hex_1.0.1.39034866">
+<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.htsoft.picc.std.config.release.hex_1.0.1.39034866" moduleId="org.eclipse.cdt.core.settings" name="Release">
 <externalSettings/>
 <extensions>
 <extension id="com.htsoft.picc.PICCIntelHEXParser" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -12,18 +12,16 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-<configuration artifactExtension="hex" artifactName="carWiper" buildProperties="" cleanCommand="rm -rf" description="" id="com.htsoft.picc.pro.config.release.hex_1.0.2.98381662" name="Release" parent="com.htsoft.picc.pro.config.release.hex_1.0.2">
-<folderInfo id="com.htsoft.picc.pro.config.release.hex._1.0.2.98381662" name="/" resourcePath="">
-<toolChain id="com.htsoft.picc.pro.toolChain.release.hex.2076265395_1.0.2" name="Release Tool Chain" superClass="com.htsoft.picc.pro.toolChain.release.hex_1.0.2">
-<targetPlatform archList="all" binaryParser="com.htsoft.picc.PICCIntelHEXParser" id="com.htsoft.picc.pro.targetPlatform_1.0.2.155932111" isAbstract="true" name="PIC Target" osList="all" superClass="com.htsoft.picc.pro.targetPlatform_1.0.2"/>
-<builder buildPath="${workspace_loc:/carWiper/Release}" id="com.htsoft.picc.pro.builder_1.0.2.98381662" name="CDT Internal Builder" superClass="com.htsoft.picc.pro.builder_1.0.2"/>
-<tool id="com.htsoft.picc.pro.tool.assembler.hex.11802082_1.0.2" name="Assembler" superClass="com.htsoft.picc.pro.tool.assembler.hex_1.0.2">
-<inputType id="com.htsoft.picc.pro.tool.assembler.input.1284739297_1.0.2" superClass="com.htsoft.picc.pro.tool.assembler.input_1.0.2"/>
+<configuration artifactExtension="hex" artifactName="carWiper" buildProperties="" cleanCommand="rm -rf" description="" id="com.htsoft.picc.std.config.release.hex_1.0.1.39034866" name="Release" parent="com.htsoft.picc.std.config.release.hex_1.0.1">
+<folderInfo id="com.htsoft.picc.std.config.release.hex._1.0.1.39034866" name="/" resourcePath="">
+<toolChain id="com.htsoft.picc.std.toolChain.release.hex.65314475_1.0.1" name="Release Tool Chain" superClass="com.htsoft.picc.std.toolChain.release.hex_1.0.1">
+<targetPlatform archList="all" binaryParser="com.htsoft.picc.PICCIntelHEXParser" id="com.htsoft.picc.targetPlatform.78351968" isAbstract="true" name="PIC Target" osList="all" superClass="com.htsoft.picc.targetPlatform"/>
+<builder buildPath="${workspace_loc:/carWiper/Release}" id="com.htsoft.picc.builder.39034866" name="CDT Internal Builder" superClass="com.htsoft.picc.builder"/>
+<tool id="com.htsoft.picc.std.tool.assembler.166620338_1.0.1" name="Assembler" superClass="com.htsoft.picc.std.tool.assembler_1.0.1"/>
+<tool id="com.htsoft.picc.std.tool.compiler.198413801_1.0.1" name="Compiler" superClass="com.htsoft.picc.std.tool.compiler_1.0.1">
+<inputType id="com.htsoft.picc.tool.compiler.input.554550850" superClass="com.htsoft.picc.tool.compiler.input"/>
 </tool>
-<tool id="com.htsoft.picc.pro.tool.p1.hex.696126519_1.0.2" name="Pre-processor/Parser" superClass="com.htsoft.picc.pro.tool.p1.hex_1.0.2">
-<inputType id="com.htsoft.picc.pro.tool.p1.input.1002181_1.0.2" superClass="com.htsoft.picc.pro.tool.p1.input_1.0.2"/>
-</tool>
-<tool id="com.htsoft.picc.pro.tool.linker.hex.1711969746_1.0.2" name="Compiler/Linker" superClass="com.htsoft.picc.pro.tool.linker.hex_1.0.2"/>
+<tool id="com.htsoft.picc.std.tool.linker.532242973_1.0.1" name="Linker" superClass="com.htsoft.picc.std.tool.linker_1.0.1"/>
 </toolChain>
 </folderInfo>
 </configuration>
@@ -119,8 +117,8 @@
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 </cconfiguration>
-<cconfiguration id="com.htsoft.picc.pro.config.debug.hex_1.0.2.105696363">
-<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.htsoft.picc.pro.config.debug.hex_1.0.2.105696363" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+<cconfiguration id="com.htsoft.picc.std.config.debug.hex_1.0.1.890985875">
+<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.htsoft.picc.std.config.debug.hex_1.0.1.890985875" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 <externalSettings/>
 <extensions>
 <extension id="com.htsoft.picc.PICCIntelHEXParser" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -128,14 +126,14 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-<configuration artifactExtension="hex" artifactName="carWiper" buildProperties="" cleanCommand="rm -rf" description="" id="com.htsoft.picc.pro.config.debug.hex_1.0.2.105696363" name="Debug" parent="com.htsoft.picc.pro.config.debug.hex_1.0.2">
-<folderInfo id="com.htsoft.picc.pro.config.debug.hex._1.0.2.105696363" name="/" resourcePath="">
-<toolChain id="com.htsoft.picc.pro.toolChain.debug.hex.1340334475_1.0.2" name="Debug Tool Chain" superClass="com.htsoft.picc.pro.toolChain.debug.hex_1.0.2">
-<targetPlatform archList="all" binaryParser="com.htsoft.picc.PICCIntelHEXParser" id="com.htsoft.picc.pro.targetPlatform_1.0.2.1862524678" isAbstract="true" name="PIC Target" osList="all" superClass="com.htsoft.picc.pro.targetPlatform_1.0.2"/>
-<builder buildPath="${workspace_loc:/carWiper/Debug}" id="com.htsoft.picc.pro.builder_1.0.2.105696363" name="CDT Internal Builder" superClass="com.htsoft.picc.pro.builder_1.0.2"/>
-<tool id="com.htsoft.picc.pro.tool.assembler.hex.1640715983_1.0.2" name="Assembler" superClass="com.htsoft.picc.pro.tool.assembler.hex_1.0.2"/>
-<tool id="com.htsoft.picc.pro.tool.p1.hex.1274841978_1.0.2" name="Pre-processor/Parser" superClass="com.htsoft.picc.pro.tool.p1.hex_1.0.2"/>
-<tool id="com.htsoft.picc.pro.tool.linker.hex.349088750_1.0.2" name="Compiler/Linker" superClass="com.htsoft.picc.pro.tool.linker.hex_1.0.2"/>
+<configuration artifactExtension="hex" artifactName="carWiper" buildProperties="" cleanCommand="rm -rf" description="" id="com.htsoft.picc.std.config.debug.hex_1.0.1.890985875" name="Debug" parent="com.htsoft.picc.std.config.debug.hex_1.0.1">
+<folderInfo id="com.htsoft.picc.std.config.debug.hex._1.0.1.890985875" name="/" resourcePath="">
+<toolChain id="com.htsoft.picc.std.toolChain.debug.hex.139096802_1.0.1" name="Debug Tool Chain" superClass="com.htsoft.picc.std.toolChain.debug.hex_1.0.1">
+<targetPlatform archList="all" binaryParser="com.htsoft.picc.PICCIntelHEXParser" id="com.htsoft.picc.targetPlatform.426652703" isAbstract="true" name="PIC Target" osList="all" superClass="com.htsoft.picc.targetPlatform"/>
+<builder buildPath="${workspace_loc:/carWiper/Debug}" id="com.htsoft.picc.builder.890985875" name="CDT Internal Builder" superClass="com.htsoft.picc.builder"/>
+<tool id="com.htsoft.picc.std.tool.assembler.1118449819_1.0.1" name="Assembler" superClass="com.htsoft.picc.std.tool.assembler_1.0.1"/>
+<tool id="com.htsoft.picc.std.tool.compiler.1613741211_1.0.1" name="Compiler" superClass="com.htsoft.picc.std.tool.compiler_1.0.1"/>
+<tool id="com.htsoft.picc.std.tool.linker.1933114287_1.0.1" name="Linker" superClass="com.htsoft.picc.std.tool.linker_1.0.1"/>
 </toolChain>
 </folderInfo>
 </configuration>
@@ -232,6 +230,6 @@
 </cconfiguration>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-<project id="carWiper.com.htsoft.picc.pro.projectType.hex_1.0.2.1770562516" name="Hex Project Type" projectType="com.htsoft.picc.pro.projectType.hex_1.0.2"/>
+<project id="carWiper.com.htsoft.picc.std.projectType.hex_1.0.1.274802616" name="Hex Project Type" projectType="com.htsoft.picc.std.projectType.hex_1.0.1"/>
 </storageModule>
 </cproject>
