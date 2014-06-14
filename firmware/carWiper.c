@@ -48,6 +48,7 @@ __CONFIG(INTIO & WDTDIS & PWRTDIS & MCLRDIS & UNPROTECT & UNPROTECT & BORDIS & I
 #define WIPER_PIN_ON 1
 #define WIPER_PIN_OFF 0
 
+#define DEBUG_LED_PIN GPIO1
 
 volatile bit fSwitchState;
 volatile uint8 fSwitchDebouncer;
@@ -55,15 +56,14 @@ volatile uint8 fSwitchDebouncer;
 
 #define WIPER_WORK_MIN_TICKS 15
 #define WIPER_WORK_MAX_TICKS 300
-#define WIPER_WAIT_MIN_TICKS 30
+#define WIPER_WORK_INFINITY 65535
+#define WIPER_WAIT_MIN_TICKS 60
 #define WIPER_WAIT_MAX_TICKS 1800
 
 volatile uint16 fWiperWorkTime;
 volatile uint16 fWiperWaitTime;
-
 volatile uint16 fWiperWorkTimer;
 volatile uint16 fWiperWaitTimer;
-volatile uint16 fWiperStartWorkTime;
 
 volatile bit fTimersMode;
 #define TIMERS_WRITE 0
@@ -80,12 +80,13 @@ void initSoftware(void)
 	fSwitchDebouncer = 0;
 	
 	fTimersMode = TIMERS_USE;
+	
 	fWiperWaitTimer = 0;
 	fWiperWorkTimer = 0;
+	fWiperWorkTime = 0;
+	fWiperWaitTime = 0;
 	
-	shouldTurnWiperOff = 0;
-	
-	fWiperWorkTime = WIPER_WORK_MIN_TICKS;
+	shouldTurnWiperOff = 0;	
 }
 
 void initHardware(void)
@@ -145,7 +146,9 @@ void turnWiperOff(void)
 
 void processWiper(void)
 {
-	if(fWiperWorkTimer < fWiperWorkTime)
+	uint16 lWorkTime = (fTimersMode == TIMERS_USE) ? fWiperWorkTime : WIPER_WORK_MIN_TICKS;
+	
+	if(fWiperWorkTimer < lWorkTime)
 	{
 		fWiperWorkTimer++;
 	}
@@ -163,10 +166,12 @@ void processWiper(void)
 
 void onSwitchTimersUse(void)
 {
-	fTimersMode = TIMERS_WRITE;		
-	fWiperWaitTime = 0;
+	fTimersMode = TIMERS_WRITE;
 	
-	shouldTurnWiperOff = 0;
+	fWiperWaitTime = 0;
+	fWiperWorkTime = 0;	
+	
+	shouldTurnWiperOff = 0;	
 	turnWiperOn();
 }
 
@@ -187,7 +192,7 @@ void onSwitchOn(void)
 	}
 	else
 	{
-		if((fWiperWaitTime < WIPER_WAIT_MIN_TICKS) || (fWiperWaitTime > WIPER_WAIT_MAX_TICKS))
+		if((fWiperWaitTime < WIPER_WAIT_MIN_TICKS) || (fWiperWaitTime > WIPER_WAIT_MAX_TICKS) || (fWiperWorkTime > WIPER_WORK_MAX_TICKS) )
 			onSwitchTimersUse();
 		else
 			onSwitchTimersWrite();
@@ -200,11 +205,12 @@ void onSwitchOff(void)
 	if(fTimersMode == TIMERS_USE)
 	{
 		if(fWiperWorkTimer >= WIPER_WORK_MIN_TICKS)
-			fWiperWorkTimer = fWiperWorkTime;
+			fWiperWorkTimer = WIPER_WORK_INFINITY;
 	}
 	else
 	{
-		
+		if(fWiperWorkTime < WIPER_WORK_MIN_TICKS)
+			fWiperWorkTime = WIPER_WORK_MIN_TICKS;
 	}
 		
 	shouldTurnWiperOff = 1;
@@ -241,6 +247,9 @@ void processTimers(void)
 	{
 		if(fWiperWaitTime <= WIPER_WAIT_MAX_TICKS)
 			fWiperWaitTime++;
+		
+		if( (fSwitchState == SWITCH_PIN_ON) && (fWiperWorkTime <= WIPER_WORK_MAX_TICKS) )
+			fWiperWorkTime++;
 	}
 	else
 	{
@@ -256,136 +265,6 @@ void processTimers(void)
 		}
 	}
 }
-
-
-
-
-/*
-void turnWiperOn(void)
-{
-	WIPER_PIN = WIPER_PIN_ON;
-	//fWiperWorkTimer = (fTimersMode == TIMERS_WRITE) ? WIPER_WORK_MIN_TICKS : fWiperWorkTime;
-	fWiperWorkTimer = WIPER_WORK_MIN_TICKS + WIPER_WORK_MIN_TICKS;
-	fWiperStartWorkTime = fWiperWorkTimer;
-}
-
-void disableWiper(void)
-{
-	WIPER_PIN = WIPER_PIN_OFF;
-	fWiperWorkTimer = 0;
-}
-
-void turnWiperOff(void)
-{	
-	if(fWiperStartWorkTime - fWiperWorkTimer > WIPER_WORK_MIN_TICKS)	
-		disableWiper();
-}
-
-
-void processWiper(void)
-{
-	if(fWiperWorkTimer > 0)
-		fWiperWorkTimer--;
-	else
-	{
-		if(
-			fTimersMode == TIMERS_USE
-			|| (fTimersMode == TIMERS_WRITE && fSwitchState == SWITCH_PIN_OFF) 
-		)
-			disableWiper();
-	}
-}
-
-//----------------------------------------------------------------------------//
-
-void onSwitchOn(void)
-{
-	if(fTimersMode == TIMERS_USE)
-	{
-		fTimersMode = TIMERS_WRITE;
-		
-		turnWiperOn();
-		
-		fWiperWorkTime = 0;
-		fWiperWaitTime = 0;
-	}
-	else
-	{				
-		fTimersMode = TIMERS_USE;
-		fWiperWaitTimer = 0;
-	}
-}
-
-void onSwitchOff(void)
-{
-	turnWiperOff();
-	
-	if(fWiperWorkTime < WIPER_WORK_MIN_TICKS)
-		fWiperWorkTime = WIPER_WORK_MIN_TICKS;
-		
-	if(fTimersMode == TIMERS_WRITE)
-	{			
-		if( (fWiperWorkTime > WIPER_WORK_MAX_TICKS) || (fWiperWaitTime < WIPER_WAIT_MIN_TICKS) || (fWiperWaitTime > WIPER_WAIT_MAX_TICKS) )
-		{
-			//fWiperWorkTime = WIPER_WORK_MIN_TICKS;
-			fTimersMode = TIMERS_USE;
-		}
-	}
-}
-
-//----------------------------------------------------------------------------//
-
-void processSwitch(void)
-{
-	if(fSwitchDebouncer == 0)
-	{
-		if(SWITCH_PIN != fSwitchState)
-			fSwitchDebouncer = SWITCH_DEBOUNCE_TICKS;
-	}
-	else
-	{
-		if(fSwitchDebouncer == 1 && SWITCH_PIN != fSwitchState)
-		{
-			fSwitchState = SWITCH_PIN;
-			
-			if(fSwitchState == SWITCH_PIN_ON)
-				onSwitchOn();
-			else
-				onSwitchOff();
-		}
-		
-		fSwitchDebouncer--;
-	}
-}
-
-//----------------------------------------------------------------------------//
-
-void processTimers(void)
-{
-	if(fTimersMode == TIMERS_WRITE)
-	{
-		if(fSwitchState == SWITCH_PIN_ON)
-		{
-			if(fWiperWorkTime <= WIPER_WORK_MAX_TICKS)
-				fWiperWorkTime++;
-		}
-		if(fWiperWaitTime <= WIPER_WAIT_MAX_TICKS)
-			fWiperWaitTime++;
-	}
-	else
-	{
-		if(fSwitchState == SWITCH_PIN_ON)
-		{			
-			if(fWiperWaitTimer == 0)
-			{
-				fWiperWaitTimer = fWiperWaitTime;
-				turnWiperOn();
-			}
-			fWiperWaitTimer--;
-		}
-	}
-}
-*/
 
 //----------------------------------------------------------------------------//
 
@@ -412,6 +291,6 @@ void main(void)
 		
 	while (1)
 	{
-		GPIO1 = fTimersMode;
+		DEBUG_LED_PIN = (fSwitchState == SWITCH_PIN_ON) && fTimersMode;
 	}
 }
