@@ -27,4 +27,4 @@ Functionality scenario:
 * firmware — MCU firmware, Hi-Tech C STD 9.60PL3.
 
 ##Photos, etc
-You can read about this device in my car blog later.
+You can read about this device in my [car blog](http://www.drive2.ru/l/3927450/) (in Russian).
